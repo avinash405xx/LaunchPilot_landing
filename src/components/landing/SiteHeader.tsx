@@ -23,7 +23,7 @@ export default function SiteHeader() {
           </a>
           <span className="hidden h-6 w-px bg-ink-700 md:block" aria-hidden="true" />
           <CtaButton variant="compact" className="hidden sm:inline-flex">
-            Get the eBook + Bonuses
+            GET THE EBOOK + BONUSES
           </CtaButton>
         </div>
       </div>

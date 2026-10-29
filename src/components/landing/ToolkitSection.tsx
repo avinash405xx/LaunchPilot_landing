@@ -88,24 +88,54 @@ const STATUS_LABEL: Record<BonusStatus, { text: string; className: string }> = {
 const INCLUDED_BONUSES = BONUSES.filter((bonus) => bonus.status !== 'in-development');
 const includedCount = INCLUDED_BONUSES.length;
 
-function BonusPricing({ originalPrice, offerPrice }: { originalPrice: number; offerPrice: number }) {
+function BonusPricing({
+  originalValue,
+  offerPrice,
+}: {
+  originalValue: number | null;
+  offerPrice: number;
+}) {
+  // Price-accuracy rule (Task §11): only show a crossed-through "was" value when a
+  // genuine, documented standalone value exists. Bonus values are currently
+  // proposed-only, so we show the transparent presentation by default. Flip
+  // `bonusPricesStatus` to "verified" once each value is substantiated.
+  const verified = siteConfig.bonusPricesStatus === 'verified';
+
+  if (verified && originalValue != null) {
+    return (
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-sm font-medium text-ink-400 line-through" aria-label="Reference value">
+          {formatPrice(originalValue)}
+        </span>
+        <span
+          className="inline-flex items-center rounded-full bg-success-400 px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-950 shadow-glow"
+          aria-label="FREE"
+        >
+          FREE
+        </span>
+        <span className="text-xs text-ink-400" aria-hidden="true">
+          ·
+        </span>
+        <span className="font-extrabold text-success-300" aria-label="Offer price">
+          {offerPrice === 0 ? '₹0 extra' : formatPrice(offerPrice)}
+        </span>
+      </div>
+    );
+  }
+
+  // Default: transparent, trustworthy presentation.
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <span className="text-sm font-medium text-ink-400 line-through" aria-label="Original value">
-        {formatPrice(originalPrice)}
-      </span>
+    <div className="flex flex-col items-start gap-0.5">
       <span
-        className="inline-flex items-center rounded-full bg-brand-400 px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-950 shadow-glow"
+        className="inline-flex items-center rounded-full bg-success-400 px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-ink-950 shadow-glow"
         aria-label="FREE"
       >
         FREE
       </span>
-      <span className="text-xs text-ink-400" aria-hidden="true">
-        ·
-      </span>
-      <span className="font-extrabold text-success-400" aria-label="Offer price">
-        {formatPrice(offerPrice)}
-      </span>
+      <p className="text-sm font-medium text-ink-200">Included with your purchase</p>
+      <p className="font-extrabold text-success-300">
+        {offerPrice === 0 ? '₹0 extra' : formatPrice(offerPrice)}
+      </p>
     </div>
   );
 }
@@ -142,13 +172,12 @@ function BonusCard({ number, image, title, headline, body, includes, status, con
         <p className="mt-1 text-sm font-semibold text-brand-400">{headline}</p>
         <p className="mt-3 text-sm leading-relaxed text-ink-300">{body}</p>
         <div className="mt-auto pt-4">
-          {available && originalValue != null && (
+          {available ? (
             <BonusPricing
-              originalPrice={originalValue}
+              originalValue={originalValue ?? null}
               offerPrice={siteConfig.bonusOfferPrice}
             />
-          )}
-          {!available && (
+          ) : (
             <p className="text-xs font-semibold uppercase tracking-wider text-ink-400">Planned contents</p>
           )}
           <ul className="mt-2 space-y-1.5 text-sm text-ink-100">
@@ -174,7 +203,7 @@ export default function ToolkitSection() {
           eyebrow="Bonuses"
           title="Your Complete"
           accent="Digital Business Toolkit"
-          subtitle={`${includedCount} practical resources to help you explore ideas, organise your plans, and take your next steps.`}
+          subtitle="Practical resources to help you explore ideas, organise your plans, create your online presence, and prepare your marketing."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {BONUSES.map((bonus) => (
@@ -191,11 +220,11 @@ export default function ToolkitSection() {
           <p className="mt-1 text-xs font-medium text-success-300">
             {includedCount} Bonuses Included · {formatPrice(siteConfig.bonusOfferPrice)} Extra
           </p>
-          {siteConfig.bonusPricesStatus === 'proposed-pending-confirmation' && (
-            <p className="mt-2.5 text-[10px] italic text-ink-400">
-              Original values are proposed reference values, not verified former prices. Pending confirmation.
-            </p>
-          )}
+          <p className="mt-2.5 text-[10px] italic text-ink-400">
+            Items marked "In development" are not included yet. They are completed and added at
+            no extra cost when ready. Crossed-through values are shown only when a bonus's
+            standalone value is independently confirmed.
+          </p>
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-ink-400">
           Illustrations are representative. Bonuses are educational resources and do not guarantee results. The AI Business Coach is a prompt kit you use with an AI assistant of your choice; it is not a live chatbot. Items marked "In development" are not included yet.

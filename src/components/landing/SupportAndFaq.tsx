@@ -92,7 +92,7 @@ export function FaqAndFinalCta() {
             Give your ideas a chance. Build new skills, explore digital opportunities, and take the next step towards the future you imagine.
           </p>
           <div className="relative mt-8 flex justify-center">
-            <CtaButton>Start Your Journey</CtaButton>
+            <CtaButton>START YOUR JOURNEY</CtaButton>
           </div>
         </div>
       </div>

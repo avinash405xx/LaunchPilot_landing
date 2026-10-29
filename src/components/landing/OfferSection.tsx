@@ -40,7 +40,7 @@ export default function OfferSection() {
             ))}
           </ul>
           <div className="mt-8">
-            <CtaButton variant="ghost">Get the eBook + Bonuses</CtaButton>
+            <CtaButton variant="ghost">GET THE EBOOK + BONUSES</CtaButton>
           </div>
         </div>
 
@@ -93,7 +93,7 @@ export default function OfferSection() {
           </div>
 
           <div className="mt-6">
-            <CtaButton className="w-full">Get the eBook + Bonuses</CtaButton>
+            <CtaButton className="w-full">GET THE EBOOK + BONUSES</CtaButton>
           </div>
 
           <ul className="mt-6 space-y-3 text-sm text-ink-200">

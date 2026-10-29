@@ -10,7 +10,7 @@ export const siteConfig = {
 
   price: 499,
   // Strike-through comparison price. Only show it if the product was genuinely sold at this price; set to null to hide it.
-  referencePrice: 1499 as number | null,
+  referencePrice: null,
   currency: 'INR',
   currencySymbol: '₹',
 

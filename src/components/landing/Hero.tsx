@@ -86,17 +86,26 @@ export default function Hero() {
         <div className="relative z-10 animate-fade-up">
           <div className="inline-flex items-center gap-2 rounded-full border border-brand-400/60 bg-ink-900/70 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider text-brand-300 sm:text-xs">
             <Rocket className="h-3.5 w-3.5" aria-hidden="true" />
-            Your online business starting point
+            YOUR ONLINE BUSINESS STARTING POINT
           </div>
 
           <h1 className="mt-6 text-[2.15rem] font-extrabold leading-[1.1] text-white sm:text-5xl lg:text-[3.6rem]">
-            Stop Guessing.
-            <span className="block text-brand-400">Start Building</span>
-            Your Online Business.
+            From Business Idea to <span className="text-brand-400">Your First Online Offer</span>.
           </h1>
 
           <p className="mt-5 text-xl font-bold leading-snug text-white sm:text-2xl">
-            Your Next Chapter <span className="text-brand-400">Starts Here.</span>
+            Everything You Need to Plan, Build and Market Your Business.
+          </p>
+
+          <p className="mt-4 max-w-lg leading-relaxed text-ink-200 sm:text-base">
+            Explore business niches, choose a product, plan your offer, build your landing
+            page, and learn how to market it with Meta Ads. LaunchPilot brings practical
+            guides, prompts, templates, and action plans together in one organised toolkit.
+          </p>
+
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-ink-300">
+            You don't need to have every answer on day one. Start with an idea, follow a
+            practical process, and build your next steps with greater clarity and confidence.
           </p>
 
           <p className="mt-4 max-w-xl text-base leading-relaxed text-ink-200">
@@ -116,7 +125,7 @@ export default function Hero() {
           </ul>
 
           <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
-            <CtaButton>Get the eBook + Bonuses</CtaButton>
+            <CtaButton>GET THE EBOOK + BONUSES</CtaButton>
             <PriceBlock />
           </div>
 
