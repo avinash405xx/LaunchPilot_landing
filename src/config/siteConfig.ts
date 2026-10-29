@@ -22,7 +22,7 @@ export const siteConfig = {
   checkoutUrl: 'https://superprofile.bio/vp/launchpilot-%E2%80%93-complete-online-business-starter-toolkit',
 
   analytics: {
-    metaPixelId: '',
+    metaPixelId: '4639901429576876',
     clarityProjectId: 'z5cupx4cdk',
   },
 

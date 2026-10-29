@@ -81,3 +81,30 @@ export function trackEvent(name: string, params?: Record<string, unknown>) {
   }
   window.clarity?.('event', name);
 }
+
+// Purchase conversion tracking.
+//
+// IMPORTANT: Checkout is completed off-site on SuperProfile (opened in a new tab).
+// This client app never receives a verified payment result, so a Purchase event
+// must NEVER be fired from a button click or from this app's unverified
+// /thank-you page. The authoritative Purchase event must be sent from the
+// SuperProfile dashboard / server-side (using this same Pixel ID) on confirmed
+// successful payment.
+//
+// `purchaseTracked` ensures the Purchase event fires at most once even if a
+// verified signal is received more than once (e.g. redirect/refresh), preventing
+// duplicate purchase events alongside any Purchase SuperProfile may also fire.
+let purchaseTracked = false;
+export function trackPurchase(
+  value: number,
+  currency: string,
+  contentName?: string,
+) {
+  if (purchaseTracked) return;
+  purchaseTracked = true;
+  window.fbq?.('track', 'Purchase', {
+    value,
+    currency,
+    ...(contentName ? { content_name: contentName } : {}),
+  });
+}
