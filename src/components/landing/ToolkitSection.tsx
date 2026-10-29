@@ -220,11 +220,7 @@ export default function ToolkitSection() {
           <p className="mt-1 text-xs font-medium text-success-300">
             {includedCount} Bonuses Included · {formatPrice(siteConfig.bonusOfferPrice)} Extra
           </p>
-          <p className="mt-2.5 text-[10px] italic text-ink-400">
-            Items marked "In development" are not included yet. They are completed and added at
-            no extra cost when ready. Crossed-through values are shown only when a bonus's
-            standalone value is independently confirmed.
-          </p>
+        
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-xs leading-relaxed text-ink-400">
           Illustrations are representative. Bonuses are educational resources and do not guarantee results. The AI Business Coach is a prompt kit you use with an AI assistant of your choice; it is not a live chatbot. Items marked "In development" are not included yet.

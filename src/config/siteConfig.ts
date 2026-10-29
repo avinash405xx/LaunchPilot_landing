@@ -51,7 +51,7 @@ export const siteConfig = {
   // The only historical price on record is the main product `referencePrice` (₹1,499); that
   // is the MAIN product's price and is NOT a bonus's standalone resale value — do NOT reuse it.
   // TODO(price-accuracy): confirm the genuine standalone value of each bonus.
-  bonusPricesStatus: 'proposed-pending-confirmation' as const,
+  bonusPricesStatus: 'proposed-pending-confirmation' as 'proposed-pending-confirmation' | 'verified',
   // Proposed original (strike-through) value for each bonus, per bonus key. Shown ONLY on
   // bonuses that are genuinely complete and included ("ready" or "prompt-based"). In-
   // development bonuses are never shown with a price. Edit a number here to update a bonus.

@@ -68,12 +68,7 @@ export default function BusinessJourney() {
               >
                 <div className="flex items-start gap-4">
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-400/15 text-brand-300">
-                    <span
-                      aria-hidden="true"
-                      className="inline-flex h-5 w-5 items-center justify-center"
-                    >
-                      <Icon className="h-5 w-5" />
-                    </span>
+                    <Icon className="h-5 w-5" aria-hidden="true" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <span className="text-xs font-semibold uppercase tracking-widest text-accent-300">

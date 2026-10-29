@@ -18,7 +18,7 @@ All public business settings live in `src/config/siteConfig.ts`. Never put secre
 | Microsoft Clarity project ID | `analytics.clarityProjectId` | Empty (tracking off) |
 | WhatsApp support number | `whatsappNumber`, `whatsappDisplay` | Set to +91-8797391885 |
 | Price | `price` | Rs 499 |
-| Reference (strike-through) price | `referencePrice` | Rs 1,499. Discount % is calculated from it. Set to `null` unless the product was genuinely sold at that price |
+| Reference (strike-through) price | `referencePrice` | null (no comparison price shown). Set a value only if the product was genuinely sold at this price before |
 | Hosted checkout page | `checkoutUrl` | Empty. When set, every CTA goes there instead of `/checkout` |
 | Bonus status labels | `bonuses.*` (`ready`, `prompt-based`, `in-development`) | See section 3 |
 | SEO | `seo.*` | Canonical URL and share image not set |
@@ -54,7 +54,7 @@ Each CTA also sends the same event name to Microsoft Clarity as a custom event.
 | Event | When it fires |
 | --- | --- |
 | `PageView` (Meta Pixel) | Every time a page loads or the route changes |
-| `InitiateCheckout` (Meta Pixel + Clarity) | Any "Get the eBook + Bonuses" click |
+| `InitiateCheckout` (Meta Pixel + Clarity) | Any "GET THE EBOOK + BONUSES" click |
 
 Not yet implemented: `Purchase`. It should fire on the thank-you page only after a real payment is confirmed.
 
@@ -64,15 +64,21 @@ Not yet implemented: `Purchase`. It should fire on the thank-you page only after
 
 Sections appear in this order (`src/pages/LandingPage.tsx`):
 
-1. **Header and Hero** (`SiteHeader.tsx`, `Hero.tsx`): compact header (logo, WhatsApp support, "Get the eBook + Bonuses"; no navigation bar), the "Stop Guessing. Start Building Your Online Business." headline, "Your Next Chapter Starts Here.", price, eBook cover with three floating cards, and a trust strip.
-2. **Problem** (`ProblemSection.tsx`): "Sounds familiar?" pain points.
-3. **Solution / Features** (`ProblemSection.tsx`): "Meet LaunchPilot" four benefit cards.
-4. **Framework** (`ProblemSection.tsx`): four-step Choose, Validate, Build, Launch.
-5. **Offer** (`OfferSection.tsx`): benefit checklist, launch roadmap, pricing card.
-6. **Your Complete Digital Business Toolkit** (`ToolkitSection.tsx`): six bonus cards with illustrations from `public/bonuses/`. Each card's badge comes from `siteConfig.bonuses`. In-development cards list "Planned contents" instead of "Inside".
-7. **WhatsApp support strip** (`SupportAndFaq.tsx`).
-8. **FAQ and final CTA** (`SupportAndFaq.tsx`): six expandable questions and the "Your Future Is Built One Step at a Time" closing card.
-9. **Footer** (`SiteFooter.tsx`).
+1. **Header and Hero** (`SiteHeader.tsx`, `Hero.tsx`): compact header (logo, WhatsApp support, "GET THE EBOOK + BONUSES"; no navigation bar), the "From Business Idea to Your First Online Offer." headline, supporting headline, description, price, the purple eBook cover with three floating cards, and a trust strip.
+2. **Business Journey** (`BusinessJourney.tsx`): six-stage roadmap from niche selection to launch-and-improve.
+3. **Problem** (`ProblemSection.tsx`): "Sounds familiar?" pain points.
+4. **Solution / Features** (`ProblemSection.tsx`): "Meet LaunchPilot" four benefit cards.
+5. **Framework** (`ProblemSection.tsx`): four-step Choose, Validate, Build, Launch.
+6. **Product models** (`ProductModels.tsx`): digital vs physical business types.
+7. **Niche selection** (`NicheSelection.tsx`): scorecard and filterable spreadsheet workflow.
+8. **Offer planning** (`OfferPlanning.tsx`): turning an idea into a priced offer.
+9. **Marketing workflow** (`MarketingWorkflow.tsx`): landing-page and Meta Ads preparation.
+10. **Offer** (`OfferSection.tsx`): benefit checklist, launch roadmap, pricing card.
+11. **Your Complete Digital Business Toolkit** (`ToolkitSection.tsx`): six bonus cards with illustrations from `public/bonuses/`. Each card's badge comes from `siteConfig.bonuses`; included cards show a transparent "FREE / Included with your purchase / ₹0 extra" treatment, and in-development cards list "Planned contents".
+12. **Value summary** (`ValueSummary.tsx`): checklist of verified contents.
+13. **WhatsApp support strip** (`SupportAndFaq.tsx`).
+14. **FAQ and final CTA** (`SupportAndFaq.tsx`): six expandable questions and the "Your Future Is Built One Step at a Time" closing card.
+15. **Footer** (`SiteFooter.tsx`).
 
 All copy lives inside these component files. To change wording, edit the text in the relevant file.
 
@@ -163,4 +169,4 @@ src/
 5. Build paid delivery for the files in `resources/` (needs confirmed payment first).
 6. Add real testimonials or proof only with real customer permission and data.
 7. Replace the placeholder eBook cover with the original approved mockup.
-8. Confirm the Rs 1,499 reference price is genuine, or set `referencePrice` to `null`.
+8. ~~Confirm the Rs 1,499 reference price is genuine, or set `referencePrice` to `null`.~~ Resolved: `referencePrice` is now `null` to avoid showing an unverified comparison price or discount.

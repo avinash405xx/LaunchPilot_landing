@@ -1,4 +1,4 @@
-import { Layout, Megaphone, Monitor, Search, BarChart3, ClipboardCheck } from 'lucide-react';
+import { Layout, Megaphone, Search, BarChart3, ClipboardCheck } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { SectionHeading } from '@/components/landing/ProblemSection';
 
