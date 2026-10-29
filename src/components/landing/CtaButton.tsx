@@ -18,7 +18,7 @@ export default function CtaButton({ children, variant = 'primary', className = '
       content_name: siteConfig.productName,
     });
     if (siteConfig.checkoutUrl) {
-      window.location.assign(siteConfig.checkoutUrl);
+      window.open(siteConfig.checkoutUrl, '_blank', 'noopener,noreferrer');
     } else {
       navigate('/checkout');
     }

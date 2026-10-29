@@ -17,8 +17,9 @@ export const siteConfig = {
   whatsappNumber: '918797391885',
   whatsappDisplay: '+91-8797391885',
 
-  // Hosted PhonePe (or other provider) payment page. Leave empty to use the built-in /checkout page.
-  checkoutUrl: '',
+  // Hosted payment page (SuperProfile). Purchase CTAs open it in a new tab.
+  // Leave empty to fall back to the built-in /checkout page.
+  checkoutUrl: 'https://superprofile.bio/vp/launchpilot-%E2%80%93-complete-online-business-starter-toolkit',
 
   analytics: {
     metaPixelId: '',

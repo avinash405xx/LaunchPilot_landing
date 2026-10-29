@@ -19,10 +19,10 @@ All public business settings live in `src/config/siteConfig.ts`. Never put secre
 | WhatsApp support number | `whatsappNumber`, `whatsappDisplay` | Set to +91-8797391885 |
 | Price | `price` | Rs 499 |
 | Reference (strike-through) price | `referencePrice` | null (no comparison price shown). Set a value only if the product was genuinely sold at this price before |
-| Hosted checkout page | `checkoutUrl` | Empty. When set, every CTA goes there instead of `/checkout` |
+| Hosted checkout page | `checkoutUrl` | SuperProfile link. Purchase CTAs open it in a new tab. Leave empty to use the built-in `/checkout` page |
 | Bonus status labels | `bonuses.*` (`ready`, `prompt-based`, `in-development`) | See section 3 |
 | SEO | `seo.*` | Canonical URL and share image not set |
-| Payment gateway | Not connected | Checkout does not charge yet |
+| Payment gateway | SuperProfile | Purchase CTA opens the SuperProfile payment page in a new tab |
 
 Leaving an ID empty disables that tracker completely. No script is loaded.
 
@@ -35,7 +35,7 @@ Routing is handled by a small built-in helper (`src/lib/router.ts`). No routing 
 | Path | Page | Purpose |
 | --- | --- | --- |
 | `/` | Landing page | Sells the eBook |
-| `/checkout` | Checkout | Order summary. Online payment is not connected yet, so the buy button is disabled and points to WhatsApp |
+| `/checkout` | Checkout | Order summary. The primary button opens the SuperProfile payment page in a new tab; a WhatsApp option is also available |
 | `/thank-you` | Thank you | Thanks message and WhatsApp support link. It does not confirm a purchase |
 
 Any unknown path shows the landing page.
@@ -45,7 +45,7 @@ Any unknown path shows the landing page.
 Every CTA button (`src/components/landing/CtaButton.tsx`) does two things on click:
 
 1. Sends a Meta Pixel `InitiateCheckout` event with value, currency, and product name.
-2. Goes to `siteConfig.checkoutUrl` if set, otherwise navigates to `/checkout`.
+2. If `siteConfig.checkoutUrl` is set, opens it in a new tab (SuperProfile); otherwise navigates to `/checkout`.
 
 Each CTA also sends the same event name to Microsoft Clarity as a custom event.
 

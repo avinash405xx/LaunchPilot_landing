@@ -1,5 +1,6 @@
 import { ArrowLeft, ClipboardCheck, CreditCard, MessageCircle, Rocket, ShieldAlert } from 'lucide-react';
 import { formatPrice, siteConfig, whatsappUrl } from '@/config/siteConfig';
+import CtaButton from '@/components/landing/CtaButton';
 import { navigate } from '@/lib/router';
 
 export default function CheckoutPage() {
@@ -49,13 +50,7 @@ export default function CheckoutPage() {
             <p className="mt-2 text-xs text-ink-400">One-time price</p>
           </div>
           <div className="mt-8 space-y-4">
-            <button
-              type="button"
-              disabled
-              className="w-full cursor-not-allowed rounded-full bg-ink-700 px-6 py-4 text-base font-semibold text-ink-300"
-            >
-              Online payment coming soon
-            </button>
+            <CtaButton className="w-full">GET THE EBOOK + BONUSES</CtaButton>
             <a
               href={whatsappUrl}
               target="_blank"
