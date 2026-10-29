@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  @keyframes launchpilot-gold-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      box-shadow:
+        0 0 10px rgba(255, 194, 31, 0.3),
+        0 0 22px rgba(255, 194, 31, 0.12);
+    }
+    50% {
+      transform: scale(1.02);
+      box-shadow:
+        0 0 18px rgba(255, 194, 31, 0.55),
+        0 0 34px rgba(255, 194, 31, 0.25);
+    }
+  }
+
+  .cta-pulse {
+    animation: launchpilot-gold-pulse 2.2s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .cta-pulse:hover {
+    box-shadow:
+      0 0 22px rgba(255, 194, 31, 0.6),
+      0 0 40px rgba(255, 194, 31, 0.3);
+  }
+
+  .cta-pulse:active {
+    animation: none;
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .cta-pulse {
+    animation: none;
+  }
+}
