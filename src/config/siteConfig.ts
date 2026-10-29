@@ -23,7 +23,7 @@ export const siteConfig = {
 
   analytics: {
     metaPixelId: '',
-    clarityProjectId: '',
+    clarityProjectId: 'z5cupx4cdk',
   },
 
   seo: {
